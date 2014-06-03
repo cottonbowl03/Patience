@@ -1,0 +1,77 @@
+//This is a card object.
+public class Card {
+
+  private final int value;
+  private final int suit;
+  private Card next;
+  private boolean visable;
+  private String[] faceCards = {"Jack", "Queen", "King", "Ace"};
+  private String[] suits = {"Hearts", "Spades", "Diamonds", "Clubs"};
+  //public final char color;
+
+  // public Card() {       why doesn't this work?
+  //   this(null, null);   Thankfully, no need for it
+  // }
+
+  public Card(int num, int kind) {
+    value = num;
+    suit = kind;
+    next = null;
+    visable = false;
+  }
+
+  public String toString() {
+    return this.getValName() + " of " + this.getSuitName();
+  }
+
+  public int getValue() {
+    return value;
+  }
+
+  public String getValName() {
+    if (value > 10)
+      return faceCards[value - 11];
+    else
+      return this.value + "";
+  }
+
+  public int getSuit() {
+    return suit;
+  }
+
+  public String getSuitName() {
+    return suits[suit];
+  }
+
+  public char getColor() {
+    if (suit % 2 == 0)
+      return 'R';
+    else
+      return 'B';
+  }
+
+  public boolean showVis() {
+    return visable;
+  }
+
+  public boolean makeVis() {
+    boolean oldVis = visable;
+    visable = true;
+    return(!(oldVis == visable));
+  }
+
+  public boolean hasNext() {
+    if(next == null)
+      return false;
+    else
+      return true;
+  }
+
+  public Card getNext() {
+    return next;
+  }
+
+  public void setNext(Card nextCard) {
+    next = nextCard;
+  }
+}
